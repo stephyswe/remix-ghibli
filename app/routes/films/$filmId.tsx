@@ -1,7 +1,14 @@
-import { LoaderFunction, Outlet, useLoaderData } from 'remix';
+import { LoaderFunction, MetaFunction, Outlet, useLoaderData } from 'remix';
 import CharacterList from '~/components/characterList';
 import FilmBanner from '~/components/filmBanner';
 import { Film, getFilmById } from '../api/films';
+
+export const meta: MetaFunction = ({ data }) => {
+  return {
+    title: data.title,
+    description: data.description
+  };
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
   const film = await getFilmById(params.filmId);
