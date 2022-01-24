@@ -1,4 +1,4 @@
-import { LoaderFunction, useLoaderData } from 'remix';
+import { LoaderFunction, Outlet, useLoaderData } from 'remix';
 import CharacterList from '~/components/characterList';
 import FilmBanner from '~/components/filmBanner';
 import { Film, getFilmById } from '../api/films';
@@ -19,6 +19,9 @@ export default function Film() {
         <p>{film.description}</p>
         <div className="flex py-5 space-x-5">
           <CharacterList characters={film.characters} />
+          <div className="flex-1">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>
