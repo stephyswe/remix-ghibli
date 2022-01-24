@@ -1,4 +1,4 @@
-import { Form, LoaderFunction, MetaFunction, useLoaderData } from 'remix';
+import { Form, Link, LoaderFunction, MetaFunction, useLoaderData } from 'remix';
 import { Film, getFilms } from '../api/films';
 
 // server
@@ -14,7 +14,7 @@ export default function FilmsIndex() {
 
   return (
     <div className="p-16 font-sans">
-      <h1 className="text-center text-5xl font-bold">Studio Ghibli Films</h1>
+      <h1 className="text-5xl font-bold text-center">Studio Ghibli Films</h1>
 
       <Form reloadDocument className="py-5">
         <label className="font-bold">
@@ -28,20 +28,23 @@ export default function FilmsIndex() {
         </label>
         <button
           type="submit"
-          className="mx-2 px-4 py-2 text-white font-bold bg-blue-500 hover:bg-blue-700 rounded"
+          className="px-4 py-2 mx-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
         >
           Search
         </button>
       </Form>
-      <div className="grid gap-4 grid-cols-4">
+      <div className="grid grid-cols-4 gap-4">
         {films.map((film) => (
-          <div
-            key={film.title}
-            className="hover:font-bold hover:shadow-2xl cursor-pointer hover:scale-105"
+          <Link
+            key={film.id}
+            title={film.title}
+            to={film.id}
+            className="cursor-pointer hover:font-bold hover:shadow-2xl hover:scale-105"
+            prefetch="intent"
           >
             <div>{film.title}</div>
             <img src={film.image} alt={film.title} />
-          </div>
+          </Link>
         ))}
       </div>
     </div>
