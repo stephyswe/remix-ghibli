@@ -13,6 +13,7 @@ module.exports = {
       'no-console': 'off',
 
       // meh...
+      'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/sort-type-union-intersection-members': 'off',
       'jsx-a11y/media-has-caption': 'off',
