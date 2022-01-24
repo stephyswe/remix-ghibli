@@ -21,6 +21,21 @@ export const action: ActionFunction = async ({ request, params }) => {
     filmId: params.filmId as string
   };
 
+  const errors = { name: '', message: '' };
+
+  if (!comment.name) {
+    errors.name = 'Please provide your name';
+  }
+
+  if (!comment.message) {
+    errors.message = 'Please provide a comment';
+  }
+
+  if (errors.message || errors.name) {
+    const values = Object.fromEntries(body);
+    return { errors, values };
+  }
+
   await addComments(comment);
 
   return redirect(`/films/${params.filmId}`);
