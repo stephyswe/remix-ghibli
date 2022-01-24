@@ -1,5 +1,5 @@
 import { Form, Link, LoaderFunction, MetaFunction, useLoaderData } from 'remix';
-import { Film, getFilms } from '../api/films';
+import { Film, getFilms } from '~/api/films';
 
 // server
 export const loader: LoaderFunction = async ({ request }) => {

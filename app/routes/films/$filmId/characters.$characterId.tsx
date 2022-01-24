@@ -1,5 +1,5 @@
 import { LoaderFunction, useCatch, useLoaderData } from 'remix';
-import { FilmCharacter, getFilmCharacter } from '~/routes/api/films';
+import { FilmCharacter, getFilmCharacter } from '~/api/films';
 
 export const loader: LoaderFunction = async ({ params }) => {
   // throw new Response('Different message', { status: 403 });

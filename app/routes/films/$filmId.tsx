@@ -1,7 +1,8 @@
 import { LoaderFunction, MetaFunction, Outlet, useLoaderData } from 'remix';
 import CharacterList from '~/components/characterList';
 import FilmBanner from '~/components/filmBanner';
-import { Film, getFilmById } from '../api/films';
+import { Film, getFilmById } from '~/api/films';
+import CommentList from '~/components/commentList';
 
 export const meta: MetaFunction = ({ data }) => {
   return {
@@ -26,8 +27,10 @@ export default function Film() {
         <p>{film.description}</p>
         <div className="flex py-5 space-x-5">
           <CharacterList characters={film.characters} />
-          <div className="flex-1">
+
+          <div className="flex flex-col justify-between flex-1">
             <Outlet />
+            <CommentList filmId={film.id} comments={film.comments ?? []} />
           </div>
         </div>
       </div>

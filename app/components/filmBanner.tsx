@@ -1,5 +1,5 @@
 import { Link } from 'remix';
-import { Film } from '~/routes/api/films';
+import { Film } from '~/api/films';
 
 type FilmBannerProps = {
   film: Film;

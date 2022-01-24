@@ -1,5 +1,5 @@
 import { NavLink } from 'remix';
-import { FilmCharacter } from '~/routes/api/films';
+import { FilmCharacter } from '~/api/films';
 
 type CharacterListProps = {
   characters?: FilmCharacter[];
