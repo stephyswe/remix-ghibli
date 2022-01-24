@@ -1,8 +1,30 @@
-import { LoaderFunction, MetaFunction, Outlet, useLoaderData } from 'remix';
+import {
+  ActionFunction,
+  LoaderFunction,
+  MetaFunction,
+  Outlet,
+  redirect,
+  useLoaderData
+} from 'remix';
 import CharacterList from '~/components/characterList';
 import FilmBanner from '~/components/filmBanner';
 import { Film, getFilmById } from '~/api/films';
 import CommentList from '~/components/commentList';
+import { addComments } from '~/api/comments';
+
+export const action: ActionFunction = async ({ request, params }) => {
+  const body = await request.formData();
+
+  const comment = {
+    name: body.get('name') as string,
+    message: body.get('message') as string,
+    filmId: params.filmId as string
+  };
+
+  await addComments(comment);
+
+  return redirect(`/films/${params.filmId}`);
+};
 
 export const meta: MetaFunction = ({ data }) => {
   return {

@@ -1,5 +1,5 @@
 export type CommentEntry = {
-  id: number;
+  id?: number;
   name: string;
   message: string;
   filmId: string;

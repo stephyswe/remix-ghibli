@@ -1,3 +1,4 @@
+import { Form } from 'remix';
 import { CommentEntry } from '~/api/comments';
 
 type CommentListProps = {
@@ -6,6 +7,7 @@ type CommentListProps = {
 };
 
 export default function CommentList({ comments }: CommentListProps) {
+  const inputStyle = 'inline-block w-full px-3 py-2 border rounded border-slate-400';
   return (
     <div>
       <h2 className="mb-2 text-3xl">Community Comments</h2>
@@ -17,6 +19,25 @@ export default function CommentList({ comments }: CommentListProps) {
             <p className="text-gray-700">{message}</p>
           </div>
         ))}
+
+        <div className="p-4 border rounded border-slate-400">
+          <Form method="post">
+            <fieldset>
+              <label className="inline-block my-2">Name:</label>
+              <input type="text" name="name" className={inputStyle} />
+
+              <label className="inline-block my-2">Message:</label>
+              <input type="text" name="message" className={inputStyle} />
+
+              <button
+                type="submit"
+                className="px-4 py-2 my-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+              >
+                Add comment
+              </button>
+            </fieldset>
+          </Form>
+        </div>
       </div>
     </div>
   );
